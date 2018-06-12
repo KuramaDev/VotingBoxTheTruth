@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+
+        android:background="@color/white_text"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="6dp">
+    <!--android:layout_below="@id/imgMain" -->
+
+        <RelativeLayout
+            android:id="@+id/relBarPollCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgBarPollCount"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/vote_box_icon" />
+
+            <TextView
+                android:id="@+id/txtBarPollCount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@id/imgBarPollCount"
+                android:gravity="center"
+                android:text="Ｖote: 10"
+                android:textColor="@color/PrimaryColorDark"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relBarFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgBarFavorite"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/favorite_icon" />
+
+            <TextView
+                android:id="@+id/txtBarFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@id/imgBarFavorite"
+                android:gravity="center"
+                android:text="Favorite"
+                android:textColor="@color/PrimaryColorDark"/>
+        </RelativeLayout>
+
+
+</LinearLayout>

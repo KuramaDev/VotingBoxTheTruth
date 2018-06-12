@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/SecondaryColorLight">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="22dp"
+        android:backgroundTint="@color/SecondaryColor">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="cursive"
+                android:text="@string/login_welcome"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold|italic"
+                android:typeface="normal" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/PrimaryColorDark"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_email"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/SecondaryColorLight"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:hint="email"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:paddingBottom="20dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textColorHint="@color/PrimaryColorDark"
+
+                app:passwordToggleEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_password"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/SecondaryColorLight"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:inputType="textPassword"
+                    android:maxLength="50"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp"
+                    android:hint="password"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_server_login"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:padding="10dp"
+                android:background="@color/PrimaryColorDark"
+                android:textColor="@color/white_text"
+                android:text="Login"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/btn_server_register"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:background="@color/PrimaryColorMedium"
+                android:padding="10dp"
+                android:text="Sign up for free"
+                android:textColor="@color/white_text"
+                android:textSize="18dp" />
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

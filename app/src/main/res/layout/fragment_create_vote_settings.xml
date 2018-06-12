@@ -1,0 +1,136 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <View
+            android:id="@+id/lineOption"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/SecondaryColor" />
+
+        <TextView
+            android:id="@+id/txtOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lineOption"
+            android:layout_marginLeft="5dp"
+            android:text="Option"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/txtMaxOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtOption"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Max Number"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edtMaxOption"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/txtMaxOption"
+            android:layout_below="@id/txtOption"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/txtMaxOption"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="16sp"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/txtMinOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/txtMaxOption"
+            android:layout_below="@id/txtOption"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/edtMaxOption"
+            android:text="Min Number"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/edtMinOption"
+            android:layout_width="36dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/txtMaxOption"
+            android:layout_below="@id/txtOption"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/txtMinOption"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="16sp"
+            tools:text="1" />
+
+
+        <View
+            android:id="@+id/lineVote"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/edtMinOption"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/SecondaryColor" />
+
+        <TextView
+            android:id="@+id/txtVote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lineVote"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Behaviour"
+            android:textSize="25dp" />
+
+
+
+        <TextView
+            android:id="@+id/txtEndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtVote"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Ending Date"
+            android:textSize="15dp" />
+
+       <ImageView
+            android:id="@+id/imgEndTime"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/txtEndTime"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+          android:src="@drawable/pencil" />
+
+        <TextView
+            android:id="@+id/txtEndTimeDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgEndTime"
+            android:layout_toStartOf="@+id/imgEndTime"
+            android:text="2016/10/10"
+            android:textColor="@color/SecondaryColor"
+            android:textSize="15dp" />
+
+
+
+
+    </RelativeLayout>
+</ScrollView>

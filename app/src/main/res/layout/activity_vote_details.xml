@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.stsdev.votingbox.ui.Voting.VoteDetails"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/author_bar_details"
+        layout="@layout/include_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/vote_title_voting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title of Vote"
+        android:textColor="@color/PrimaryColorDark"
+        android:textSize="20dp"
+        />
+
+    <include
+        android:id="@+id/function_details"
+        layout="@layout/include_function_bar"
+       />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/optionRec"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:scrollbars="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        tools:listitem="@layout/select_option">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+</LinearLayout>

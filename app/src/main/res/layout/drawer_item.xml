@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainView"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:gravity="center|left"
+    android:paddingLeft="20dp"
+    android:background="@color/SecondaryColorLight">
+
+    <ImageView
+        android:id="@+id/itemIcon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+
+        app:srcCompat="@android:drawable/ic_menu_help" />
+    <TextView
+        android:id="@+id/itemNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/PrimaryColorMedium"
+        android:text="Menu Item"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp" />
+</LinearLayout>
