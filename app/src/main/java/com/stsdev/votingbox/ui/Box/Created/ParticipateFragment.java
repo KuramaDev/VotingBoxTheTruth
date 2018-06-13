@@ -90,7 +90,7 @@ public class ParticipateFragment extends BaseFragment implements CreateFragmentV
         presenter =  new CreateFragmentPresenterImpImp<>();
         presenter.onAttach(this);
         rcView.setAdapter(presenter.getAdapter());
-        //presenter.RetrieveCreatedFromServer();
+        presenter.RetrieveCreatedFromServer();
 
 
 

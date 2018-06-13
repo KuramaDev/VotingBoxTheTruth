@@ -39,5 +39,8 @@ public interface VotesAPI {
     @PUT("vote/addVote.php")
     Observable<String> addVewVote(@Body Vote newvote);
 
+    @GET("vote/getParticipated.php")
+    Observable<List<Vote>> getAllParticipated(@Query("usercode")int usercode);
+
 
 }

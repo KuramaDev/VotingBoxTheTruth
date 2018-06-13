@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.Vote;
+import com.stsdev.votingbox.ui.Base.BasePresenter;
+import com.stsdev.votingbox.ui.Base.BaseView;
 import com.stsdev.votingbox.ui.Base.BaseViewHolder;
 import com.stsdev.votingbox.ui.Voting.VotingAdapter;
 
@@ -39,8 +41,14 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder>{
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_vote_details, parent, false);
-        return new MainViewHolder(view);
+        if(votes.size()>0 || !votes.isEmpty()) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_vote_details, parent, false);
+            return new MainViewHolder(view);
+        }
+        else{
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_empty_results, parent, false);
+            return new EmptyResultsViewHolder(view);
+        }
 
 
     }
@@ -106,6 +114,24 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         }
 
 
+
+    }
+
+    public class EmptyResultsViewHolder extends BaseViewHolder{
+
+        public  EmptyResultsViewHolder(View itemView){
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+        protected void clear(){
+
+        }
+
+        public void onBind(int position) {
+            super.onBind(position);
+
+
+        }
 
     }
 }

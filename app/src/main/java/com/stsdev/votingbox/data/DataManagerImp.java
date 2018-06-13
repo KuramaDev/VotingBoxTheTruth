@@ -94,6 +94,12 @@ public class DataManagerImp implements DataManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<List<Vote>> getParticipatedObservable(int usercode){
+        return votesService.getAllParticipated(usercode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
 //    public Observable<Map<String, Vote>> getCreatedObservable(){
 //        return votesService.getAllCreated()
 //                .subscribeOn(Schedulers.io())
