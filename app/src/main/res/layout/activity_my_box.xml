@@ -10,6 +10,7 @@
         android:id="@+id/appBarMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/PrimaryColorDark"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         ​
 
@@ -50,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-48dp"
-            android:background="?colorPrimary"
+            android:background="@color/PrimaryColorDark"
             android:minHeight="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:theme="@style/ThemeOverlay.AppCompat.Light" />
@@ -90,6 +91,7 @@
             android:id="@+id/tabLayoutPersonal"
             android:layout_width="fill_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@color/PrimaryColorLight"
             app:tabIndicatorColor="?android:attr/textColorPrimaryInverse"
             app:tabIndicatorHeight="4dp"
             app:tabSelectedTextColor="?android:attr/textColorPrimaryInverse" />
@@ -99,6 +101,7 @@
         android:id="@+id/vpMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/SecondaryColorLight"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

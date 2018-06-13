@@ -44,6 +44,7 @@ public class MyBox extends BaseActivity implements MyBoxView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_box);
         ButterKnife.bind(this);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         mainVP.setAdapter(new MyBox.TabsAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(mainVP);
@@ -92,9 +93,9 @@ public class MyBox extends BaseActivity implements MyBoxView {
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                case 0:
-                    return "Participate";
                 case 1:
+                    return "Participate";
+                case 0:
                     return "Favorite";
             }
             return "";
