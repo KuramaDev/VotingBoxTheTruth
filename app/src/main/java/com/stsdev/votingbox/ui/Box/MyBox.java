@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.User;
@@ -18,6 +19,7 @@ import com.stsdev.votingbox.ui.Box.Favorite.FavoriteFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MyBox extends BaseActivity implements MyBoxView {
 
@@ -45,6 +47,13 @@ public class MyBox extends BaseActivity implements MyBoxView {
         setSupportActionBar(toolbar);
         mainVP.setAdapter(new MyBox.TabsAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(mainVP);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         presenter = new MyBoxPresenterImpImp<>();
         presenter.onAttach(this);
@@ -95,5 +104,15 @@ public class MyBox extends BaseActivity implements MyBoxView {
     @Override
     public void setUp() {
 
+    }
+
+
+
+
+    @Override
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        super.onBackPressed();  // optional depending on your needs
     }
 }

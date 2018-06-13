@@ -94,8 +94,10 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
 
         private float computePercent(int votesOfOption){
-            float percentage;
-            percentage = votesOfOption*100 / totalVotes ;
+            float percentage=0;
+            if(totalVotes!=0){
+                percentage = votesOfOption*100 / totalVotes ;
+            }
             return percentage;
         }
     }

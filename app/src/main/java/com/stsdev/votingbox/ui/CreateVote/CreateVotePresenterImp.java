@@ -92,6 +92,7 @@ public class CreateVotePresenterImp<V extends CreateVoteView> extends BasePresen
                 Log.d("TEST OF RXJAVA","Completed");
 
                 getView().HideLoading();
+                getView().closeActivity();
                 //mvi.hideProgressBar();
             }
         };

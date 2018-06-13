@@ -140,4 +140,9 @@ public class AddNewVoteActivity extends BaseActivity implements CreateVoteView {
         frag2=(CreateVoteSettingsFragment) tabsAdapter.getRegisteredFragment(1);
         return frag2.getDate();
     }
+
+    @Override
+    public void closeActivity(){
+        finish();
+    }
 }

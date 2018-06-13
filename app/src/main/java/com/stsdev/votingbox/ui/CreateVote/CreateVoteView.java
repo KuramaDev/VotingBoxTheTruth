@@ -8,6 +8,6 @@ import com.stsdev.votingbox.ui.Base.BaseView;
 
 public interface CreateVoteView  extends BaseView{
 
-
+    void closeActivity();
 
 }

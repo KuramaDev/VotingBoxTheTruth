@@ -140,7 +140,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         Log.d("Create vote", "trying to do");
         Intent intent= AddNewVoteActivity.getStartIntent(MainActivity.this);
         startActivity(intent);
-        finish();
+        //inish();
     }
     @Override
     public void onBoxMenuSelected(){
@@ -148,7 +148,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         Intent intent= MyBox.getStartIntent(MainActivity.this);
         intent.putExtra("CurrentUser", getExtras());
         startActivity(intent);
-        finish();
+        //finish();
     }
     @Override
     public void onSearchMenuSelected(){
