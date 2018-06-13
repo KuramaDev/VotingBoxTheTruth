@@ -51,11 +51,18 @@ public class CreateVotePresenterImp<V extends CreateVoteView> extends BasePresen
             return ;
         }
         if(endDate==null){
+            getView().onError("You need to set an ending date");
             return;
         }
         else{
              sendDate = new Date(endDate.getTime().getTime());
              sendingDate = CommonUtils.ConvertDateToJSONString(sendDate);
+        }
+        for(Option item : options){
+            if(item.getTitle()==null || item.getTitle().isEmpty() || item.getTitle().length()==0){
+                getView().onError("All your options need to have a title");
+                return ;
+            }
         }
 
         Vote newVote = new Vote();

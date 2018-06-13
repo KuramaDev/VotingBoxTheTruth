@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,8 +77,8 @@ public class CreateOptionsFragment extends BaseFragment {
        optAdapter.setOnItemClickListener(new OptionsAdapter.OptionsHandlingListener() {
            @Override
            public void addNewOption(View view, int position) {
-               String name = optionList.get(position-1).getTitle();
-               Toast.makeText(CreateOptionsFragment.this.getContext(), name + " was clicked!", Toast.LENGTH_SHORT).show();
+               //String name = optionList.get(position-1).getTitle();
+               //Toast.makeText(CreateOptionsFragment.this.getContext(), name + " was clicked!", Toast.LENGTH_SHORT).show();
                Option option = new Option();
                option.setId(position);
                option.setCount(0);
@@ -88,6 +89,10 @@ public class CreateOptionsFragment extends BaseFragment {
 
            @Override
            public void deleteOption(View view,int position){
+               if(optionList.size()<=2){
+                   Log.d("OPTIONS SIZE" , "Need to have at least 2 options ");
+                   return;
+               }
                optionList.remove(position);
                //presenter.deleteFromList(position);
 //               presenter.UpdateList(optionList);
