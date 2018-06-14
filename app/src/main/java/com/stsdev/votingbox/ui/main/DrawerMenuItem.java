@@ -23,6 +23,7 @@ public class DrawerMenuItem {
     public static final int DRAWER_MENU_ITEM_VOTINGBOX = 2;
     public static final int DRAWER_MENU_ITEM_CREATE_VOTE = 3;
     public static final int DRAWER_MENU_ITEM_SEARCH = 4;
+    public static final int DRAWER_MENU_ITEM_ACCOUNT =5;
 
 
     private int mMenuPosition;
@@ -59,6 +60,10 @@ public class DrawerMenuItem {
                 itemNameTxt.setText("Search");
               //  itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_email_black_18dp));
                 break;
+            case DRAWER_MENU_ITEM_ACCOUNT:
+                itemNameTxt.setText("Account");
+                 itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.account));
+                break;
 
         }
     }
@@ -82,6 +87,10 @@ public class DrawerMenuItem {
                 Toast.makeText(mContext, "Search", Toast.LENGTH_SHORT).show();
                 if(mCallBack != null)mCallBack.onSearchMenuSelected();
                 break;
+            case DRAWER_MENU_ITEM_ACCOUNT:
+                Toast.makeText(mContext, "Acoount", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onAccountMenuSelected();
+                break;
 
         }
     }
@@ -100,6 +109,7 @@ public class DrawerMenuItem {
         void onCreateVoteMenuSelected();
         void onBoxMenuSelected();
         void onSearchMenuSelected();
+        void onAccountMenuSelected();
 
     }
 }

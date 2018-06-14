@@ -18,6 +18,7 @@ import com.mindorks.placeholderview.PlaceHolderView;
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
+import com.stsdev.votingbox.ui.Account.AccountDetails;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 import com.stsdev.votingbox.ui.Box.MyBox;
 import com.stsdev.votingbox.ui.CreateVote.AddNewVoteActivity;
@@ -49,6 +50,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
     DrawerMenuItem item2;
     DrawerMenuItem item3;
     DrawerMenuItem item4;
+    DrawerMenuItem item5;
 
     DrawerHeader header;
 
@@ -102,12 +104,14 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         item2 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_CREATE_VOTE);
         item3 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_VOTINGBOX);
         item4 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_SEARCH);
+        item5 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_ACCOUNT);
         mDrawerView
                 .addView(new DrawerHeader(user))
                 .addView(item1)
                 .addView(item2)
                 .addView(item3)
-                .addView(item4);
+                .addView(item4)
+                .addView(item5);
 
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.open_drawer, R.string.close_drawer){
@@ -127,6 +131,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         item2.setDrawerCallBack(this);
         item3.setDrawerCallBack(this);
         item4.setDrawerCallBack(this);
+        item5.setDrawerCallBack(this);
 
         drawerToggle.syncState();
     }
@@ -153,6 +158,13 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
     @Override
     public void onSearchMenuSelected(){
 
+    }
+    @Override
+    public void onAccountMenuSelected(){
+        Intent intent= AccountDetails.getStartIntent(MainActivity.this);
+        intent.putExtra("CurrentUser", getExtras());
+
+        startActivity(intent);
     }
 
     @Override

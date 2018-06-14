@@ -6,65 +6,54 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import io.objectbox.annotation.Entity;
-import io.objectbox.annotation.Id;
-import io.objectbox.annotation.NameInDb;
 
-/**
- * Created by stavros on 26/4/2018.
- */
-
-@Entity
-@NameInDb("USER")
 public class User implements Parcelable {
 
-    //Database Id - AutoIncrement
+    //##############################################################################################
+    //################################### STARTING #################################################
+    //##############################################################################################
 
-    @Id long id ;
-    //Properties
 
+    //#=========================================User Attributes=====================================#
 
     @Expose
     @SerializedName("usercode")
-    private int usercode ;
+    private int usercode ;     //Identifier to differentiate users
 
-    public int getUsercode() {
-        return usercode;
-    }
-
-    public void setUsercode(int usercode) {
-        this.usercode = usercode;
-    }
-
-    @NameInDb("RealName")
     @Expose
     @SerializedName("name")
-    private String name ;
+    private String name ;   //Username of every user
+
     @Expose
     @SerializedName("email")
-    @NameInDb( "Email" )
-    private String email ;
+    private String email ;  //Email of every user(login via email)
 
     @Expose
     @SerializedName("password")
-    @NameInDb("Password")
-    private String password ;
+    private String password ; // Specific password of every user(with email are the 2credentials for login)
+
+    @Expose
+    @SerializedName("register")
+    private String registeredDate ; // User registered date
+
+
+    //#======================================== Constructors =======================================#
 
     public User() {
     }
 
     public User(String name, String email, String password) {
-
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
     public User(String email, String password) {
-
         this.email = email;
         this.password = password;
     }
+
+    // #==================================== Setter and getters section ============================#
 
     public String getName() {
         return name;
@@ -90,9 +79,14 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public int getUsercode() {
+        return usercode;
     }
+
+    public String getRegisteredDate() {
+        return registeredDate;
+    }
+// #================================ Parcelable specific ===========================================#
 
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(usercode);
@@ -125,4 +119,8 @@ public class User implements Parcelable {
 
     @Override
     public int describeContents() {return 0;}
+
+    //##############################################################################################
+    //########################################## END ###############################################
+    //##############################################################################################
 }

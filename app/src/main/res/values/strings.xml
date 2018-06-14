@@ -26,4 +26,5 @@
     <string name="close_drawer">Drawer Close</string>
 
     <string name="login_welcome">Welcome Voter </string>
+    <string name="title_activity_account_details">AccountDetails</string>
 </resources>

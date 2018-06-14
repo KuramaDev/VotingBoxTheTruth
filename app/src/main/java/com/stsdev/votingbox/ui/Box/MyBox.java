@@ -116,4 +116,6 @@ public class MyBox extends BaseActivity implements MyBoxView {
         // code here to show dialog
         super.onBackPressed();  // optional depending on your needs
     }
+
+
 }

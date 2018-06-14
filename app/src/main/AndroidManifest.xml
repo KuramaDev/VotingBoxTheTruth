@@ -34,8 +34,15 @@
         <activity android:name=".ui.Register.RegisterActivity" />
         <activity android:name=".ui.Splash.SplashActivity" />
         <activity android:name=".ui.Voting.VoteDetails" />
-        <activity android:name=".ui.Box.MyBox">
-
+        <activity android:name=".ui.Box.MyBox"></activity>
+        <activity
+            android:name=".ui.Account.AccountDetails"
+            android:label="@string/title_activity_account_details"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.stsdev.votingbox.ui.main.MainActivity" />
         </activity>
     </application>
 

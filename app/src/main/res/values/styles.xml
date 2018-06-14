@@ -48,7 +48,9 @@
         <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
     </style>
 
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>
