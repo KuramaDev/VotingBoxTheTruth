@@ -5,28 +5,82 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.stsdev.votingbox.Utils.CommonUtils;
+
 
 import java.sql.Date;
 import java.util.List;
 
-/**
- * Created by stavros on 4/3/2018.
- */
+
 
 public class Vote implements Parcelable{
 
+   //##############################################################################################
+   //################################### STARTING #################################################
+   //##############################################################################################
 
+
+   //#=========================================Vote Attributes=====================================#
+
+   @Expose
    @SerializedName("Votecode")
-   private String voteCode;
+   private String voteCode;  //Identifier to differentiate votes
+
    @SerializedName("Question")
    @Expose
-   private String question;  // Η ερώτηση προς ψήφιση
-   private String StartingDate; //Ημερομηνία έναρξης της ψηφοφρίας
+   private String question;  // Questions that a user is called to answer
+
+   @Expose
+   @SerializedName("StartingDate")
+   private String StartingDate; // Date of vote's creation, otherwise date that the voted started
+
    @SerializedName("EndingDate")
    @Expose
-   private String EndingDate;
+   private String EndingDate; // Date of vote's ending
 
+   @SerializedName("options")
+   @Expose
+   private List<Option> options;   // List that holds all the options of a vote
+
+   @SerializedName("Authorname")
+   @Expose
+   private String authorName;      // Username of the vote's creator
+
+   @SerializedName("Authorcode")
+   @Expose
+   private int authorCode;
+
+   @SerializedName("Category")
+   @Expose
+   private String category;   // In which category a vote belongs
+
+   @SerializedName("CategoryId")
+   @Expose
+   private int categoryId; // Category identifier used to search through categories
+
+   @SerializedName("NumOfVotes")
+   @Expose
+   private int pollCount; // Πόσες απαντήσεις επέλεξε ο χρήστης..
+
+   @SerializedName("send_date")
+   @Expose
+   private Date _endingDate;
+
+   private boolean isFav; // is true if the vote can be found in favorites list
+   private boolean participated; // is true if the vote can be found in participated list
+
+   private boolean isMultipleChoice;   //Αν μπορεί να διαλέξει παραπάνω από μία ο χρήστης
+   private int optionMaxCount;         //Μέγιστο αριθμό επιλογών του χρήστη που μπορεί να διαλέξει
+   private int optionMinCount;         //Ελάχιστο αριθμό επιλογών που πρέπει να επιλέξει ο χρήστης
+
+   //#======================================== Constructors =======================================#
+
+
+   public Vote() {
+
+   }
+
+
+   // #==================================== Setter and getters section ============================#
 
    public Date get_endingDate() {
       return _endingDate;
@@ -34,22 +88,7 @@ public class Vote implements Parcelable{
 
    public void set_endingDate(Date _endingDate) {
       this._endingDate = _endingDate;
-      //this.EndingDate = CommonUtils.ConvertDateToString(_endingDate);
-
    }
-
-   @SerializedName("send_date")
-   @Expose
-   private Date _endingDate;
-
-   //Ημερομηνία λήξης της ψηφοφορίας
-   @SerializedName("options")
-   @Expose
-   private List<Option> options;   //Λίστα με όλες τις απαντήσεις
-
-   @SerializedName("Authorname")
-   @Expose
-   private String authorName;
 
    public String getAuthorName() {
       return authorName;
@@ -57,27 +96,6 @@ public class Vote implements Parcelable{
 
    public void setAuthorName(String authorName) {
       this.authorName = authorName;
-   }
-   //Settings of the open vote
-
-   private boolean isMultipleChoice;   //Αν μπορεί να διαλέξει παραπάνω από μία ο χρήστης
-   private int optionMaxCount;         //Μέγιστο αριθμό επιλογών του χρήστη που μπορεί να διαλέξει
-   private int optionMinCount;         //Ελάχιστο αριθμό επιλογών που πρέπει να επιλέξει ο χρήστης
-
-   //Optional attributes of a vote
-
-   private String category;   //Σε τι κατηγορία ανήκει η ψηφοφρία.
-
-   // Utility based attributes
-
-   @SerializedName("NumOfVotes")
-   @Expose
-   private int pollCount; // Πόσες απαντήσεις επέλεξε ο χρήστης.
-   private int optionCount; //Πλήθος πιθανών απαντήσεων ψηφοφορίας.
-   //Basic Attributes of a vote
-
-
-   public Vote() {
    }
 
    public String getVoteCode() {
@@ -161,16 +179,43 @@ public class Vote implements Parcelable{
       this.pollCount = pollCount;
    }
 
-   public int getOptionCount() {
-      return optionCount;
-   }
+    public int getAuthorCode() {
+        return authorCode;
+    }
 
-   public void setOptionCount(int optionCount) {
-      this.optionCount = optionCount;
-   }
+    public void setAuthorCode(int authorCode) {
+        this.authorCode = authorCode;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
+    }
+
+    public boolean isParticipated() {
+        return participated;
+    }
+
+    public void setParticipated(boolean participated) {
+        this.participated = participated;
+    }
 
 
-   public void writeToParcel(Parcel dest, int flags) {
+    // #================================ Parcelable specific ======================================#
+
+
+    public void writeToParcel(Parcel dest, int flags) {
       dest.writeString(voteCode);
       dest.writeString(question);
       dest.writeString(EndingDate);
@@ -203,5 +248,7 @@ public class Vote implements Parcelable{
    @Override
    public int describeContents() {return 0;}
 
-
+    //##############################################################################################
+    //########################################## END ###############################################
+    //##############################################################################################
 }
