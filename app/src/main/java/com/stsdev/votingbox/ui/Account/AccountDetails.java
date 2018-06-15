@@ -29,6 +29,9 @@ public class AccountDetails extends BaseActivity implements AccountDetailsView {
     @BindView(R.id.email)
     TextView email;
 
+    @BindView(R.id.registered)
+    TextView registered;
+
     @BindView(R.id.toolbarSub2)
     Toolbar toolbar ;
 
@@ -69,6 +72,7 @@ public class AccountDetails extends BaseActivity implements AccountDetailsView {
         currentUser =  getCurrentIntent().getParcelableExtra("CurrentUser");
         username.setText(currentUser.getName());
         email.setText(currentUser.getEmail());
+        registered.setText(currentUser.getRegisteredDate());
         toolbarUsername.setText(currentUser.getName());
 
     }

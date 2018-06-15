@@ -54,7 +54,13 @@ public class User implements Parcelable {
     }
 
     // #==================================== Setter and getters section ============================#
+    public void setUsercode(int usercode) {
+        this.usercode = usercode;
+    }
 
+    public void setRegisteredDate(String registeredDate) {
+        this.registeredDate = registeredDate;
+    }
     public String getName() {
         return name;
     }
@@ -93,6 +99,7 @@ public class User implements Parcelable {
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(password);
+        dest.writeString(registeredDate);
     }
 
 
@@ -101,6 +108,7 @@ public class User implements Parcelable {
         name = parcel.readString();
         email = parcel.readString();
         password = parcel.readString();
+        registeredDate = parcel.readString();
 
     }
 
