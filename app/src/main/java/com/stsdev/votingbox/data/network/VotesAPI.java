@@ -1,5 +1,6 @@
 package com.stsdev.votingbox.data.network;
 
+import com.stsdev.votingbox.data.Model.Promotion;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 
@@ -11,6 +12,7 @@ import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -41,6 +43,9 @@ public interface VotesAPI {
 
     @GET("vote/getParticipated.php")
     Observable<List<Vote>> getAllParticipated(@Query("usercode")int usercode);
+
+    @POST("vote/setParticipated.php")
+    Observable<String> addParticipated(@Body Promotion participatedInfo);
 
 
 }

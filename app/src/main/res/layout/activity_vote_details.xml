@@ -5,22 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.stsdev.votingbox.ui.Voting.VoteDetails"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/SecondaryColorLight">
 
     <include
         android:id="@+id/author_bar_details"
         layout="@layout/include_author"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"/>
+        android:layout_height="70dp"
+        android:layout_margin="2dp" />
 
     <TextView
         android:id="@+id/vote_title_voting"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:text="Title of Vote"
         android:textColor="@color/PrimaryColorDark"
         android:textSize="20dp"
+        android:background="@color/SecondaryColorLight"
+        android:textAlignment="center"
+        android:gravity="center"
         />
 
     <include
@@ -37,7 +41,21 @@
         app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         tools:listitem="@layout/select_option">
 
+
     </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:foregroundGravity="bottom"
+
+
+        android:clickable="true"
+        app:fabSize="normal"
+        app:backgroundTint="@color/SecondaryColor"
+        app:srcCompat="@drawable/vote_box_icon" />
 
 
 

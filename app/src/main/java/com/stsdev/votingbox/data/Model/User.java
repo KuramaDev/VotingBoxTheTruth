@@ -2,6 +2,7 @@ package com.stsdev.votingbox.data.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -127,6 +128,8 @@ public class User implements Parcelable {
 
     @Override
     public int describeContents() {return 0;}
+
+
 
     //##############################################################################################
     //########################################## END ###############################################

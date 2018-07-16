@@ -24,6 +24,7 @@ public class AppApiHelper  {
     private static UserAPI userApi = null;
     private static VotesAPI votesApi = null;
     private static OptionsAPI optionsAPI = null;
+    private static CategoriesAPI categoriesAPI = null;
 
 
     public static UserAPI getInstance(){
@@ -45,6 +46,13 @@ public class AppApiHelper  {
             optionsAPI = retrofit.create(OptionsAPI.class);
         }
         return  optionsAPI ;
+    }
+
+    public static CategoriesAPI getCategoriesApi(){
+        if(categoriesAPI == null){
+            categoriesAPI = retrofit.create(CategoriesAPI.class);
+        }
+        return  categoriesAPI ;
     }
 
 }

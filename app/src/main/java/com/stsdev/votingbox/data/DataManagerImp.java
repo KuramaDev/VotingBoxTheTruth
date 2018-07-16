@@ -2,10 +2,13 @@ package com.stsdev.votingbox.data;
 
 import android.util.Log;
 
+import com.stsdev.votingbox.data.Model.Category;
 import com.stsdev.votingbox.data.Model.Option;
+import com.stsdev.votingbox.data.Model.Promotion;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.data.network.AppApiHelper;
+import com.stsdev.votingbox.data.network.CategoriesAPI;
 import com.stsdev.votingbox.data.network.OptionsAPI;
 import com.stsdev.votingbox.data.network.UserAPI;
 import com.stsdev.votingbox.data.network.VotesAPI;
@@ -37,6 +40,7 @@ public class DataManagerImp implements DataManager {
     private final UserAPI service = AppApiHelper.getInstance();
     private final VotesAPI votesService = AppApiHelper.getVotesApi();
     private final OptionsAPI optionsService = AppApiHelper.getOptionsApi();
+    private final CategoriesAPI categoriesService = AppApiHelper.getCategoriesApi();
 
     public Observable<String> getCreateUserObservable(User user){
         return service.createUser(user)
@@ -96,6 +100,18 @@ public class DataManagerImp implements DataManager {
 
     public Observable<List<Vote>> getParticipatedObservable(int usercode){
         return votesService.getAllParticipated(usercode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<List<Category>> getCategoriesObservable(){
+        return categoriesService.getCategories()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<String> addParticipatedObservable(Promotion promotion){
+        return votesService.addParticipated(promotion)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

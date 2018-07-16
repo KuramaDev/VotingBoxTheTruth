@@ -12,6 +12,8 @@ public class Option {
 
     private int id ;
 
+
+
     public int getId() {
         return id;
     }
@@ -24,6 +26,14 @@ public class Option {
     @SerializedName("Votecode")
     @Expose
     private int voteCode;
+
+    public void setOptionCode(int optionCode) {
+        this.optionCode = optionCode;
+    }
+
+    @SerializedName("OptionCode")
+    @Expose
+    private int optionCode;
 
     @SerializedName("Title")
     @Expose
@@ -59,13 +69,7 @@ public class Option {
         isUserChosen = userChosen;
     }
 
-    public String getOptionCode() {
-        return OptionCode;
-    }
 
-    public void setOptionCode(String optionCode) {
-        OptionCode = optionCode;
-    }
 
     public Integer getCount() {
         return count;
@@ -75,7 +79,9 @@ public class Option {
         this.count = count;
     }
 
-    private String OptionCode;
+    public int getOptionCode() {
+        return optionCode;
+    }
 
     @SerializedName("Count")
     @Expose

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.stsdev.votingbox.data.DataManagerImp;
 import com.stsdev.votingbox.data.Model.Option;
+import com.stsdev.votingbox.data.Model.Promotion;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.ui.Base.BasePresenterImp;
 
@@ -24,6 +25,7 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
     List<Option> options;
     Vote transferedVote;
     DataManagerImp datamanager;
+    Option selectedOption;
 
     public VotingPresenterImp(Vote vote) {
         this.transferedVote = vote;
@@ -85,5 +87,71 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
 
     }
 
+    @Override
+    public void initListenerInAdapter(){
+        adapter.setOnItemClickListener(new VotingAdapter.OnItemSelectedListenerVoting(){
+            @Override
+            public  void itemSelected(int position){
+                Option transferOption;
+                Log.d("Item Clicked", String.valueOf(position));
+                transferOption= options.get(position);
+                Log.d("OptionCode", String.valueOf(transferOption.getOptionCode()));
+                selectedOption = transferOption;
+
+            }
+            @Override
+            public  void unselect(int position){
+
+                Log.d("Previous Item", String.valueOf(position));
+
+
+            }
+
+        });
+    }
+
+    public void sendPromotion(){
+        Promotion promotion = new Promotion();
+        promotion.setVoteCode(Integer.valueOf(transferedVote.getVoteCode()));
+        promotion.setUserCode(transferedVote.getAuthorCode());
+        promotion.setOptionCode(selectedOption.getOptionCode());
+        Log.d("UserCode to send", String.valueOf(promotion.getUserCode()));
+        Log.d("VoteCode to send", String.valueOf(promotion.getVoteCode()));
+        Log.d("OptionCode to send", String.valueOf(promotion.getOptionCode()));
+        datamanager.addParticipatedObservable(promotion).subscribeWith(getObserverPatricipated());
+    }
+
+    private DisposableObserver<String> getObserverPatricipated(){
+        return new DisposableObserver<String>() {
+
+            @Override
+            public void onNext(@NonNull String movieResponse) {
+
+                Log.d("TEST OF RXJAVA","OnNext"+movieResponse);
+                // mvi.displayMovies(movieResponse);
+                if(movieResponse.equals("s")){
+
+                }
+                else{
+                    getView().onError(movieResponse);
+                }
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.d("ERROR","Error"+e);
+                e.printStackTrace();
+                //mvi.displayError("Error fetching Movie Data");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d("TEST OF RXJAVA","Completed");
+                getView().HideLoading();
+
+                //mvi.hideProgressBar();
+            }
+        };
+    }
 
 }

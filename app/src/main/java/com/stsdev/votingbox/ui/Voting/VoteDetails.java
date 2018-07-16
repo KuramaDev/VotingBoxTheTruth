@@ -3,15 +3,18 @@ package com.stsdev.votingbox.ui.Voting;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
+import com.stsdev.votingbox.data.Model.Promotion;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
@@ -35,6 +38,8 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
 
 
+
+
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, VoteDetails.class);
         return intent;
@@ -53,6 +58,7 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
 
         optionArea.setAdapter(presenter.getAdapter());
+        presenter.initListenerInAdapter();
     }
 
     @Override
@@ -70,5 +76,9 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
         numOfVotes.setText(String.valueOf(vote.getPollCount()));
     }
 
+    @OnClick(R.id.floatingActionButton)
+    public void submit(){
+        presenter.sendPromotion();
+    }
 
 }

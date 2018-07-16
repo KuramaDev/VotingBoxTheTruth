@@ -9,4 +9,5 @@ import com.stsdev.votingbox.ui.Base.BasePresenter;
 public interface VotingPresenterContract<V extends VoteDetailsContract> extends BasePresenter<V> {
 
     void getOptionsFromServer();
+    void initListenerInAdapter();
 }

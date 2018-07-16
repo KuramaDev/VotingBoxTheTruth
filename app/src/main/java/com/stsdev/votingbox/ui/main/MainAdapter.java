@@ -82,6 +82,9 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder>{
         @BindView(R.id.txtBarPollCount)
         TextView numOfVotes;
 
+        @BindView(R.id.category_title)
+        TextView category;
+
 
         public   MainViewHolder(View itemView){
             super(itemView);
@@ -99,6 +102,7 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder>{
             endingTime.setText(vote.getEndingDate());
             voteTitle.setText(vote.getQuestion());
             numOfVotes.setText(String.valueOf(vote.getPollCount()));
+            category.setText(vote.getCategory());
         }
 
 

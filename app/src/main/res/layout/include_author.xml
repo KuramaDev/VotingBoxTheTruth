@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="3dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="8dp"
-    android:padding="2dp">
+    android:padding="5dp"
+    android:background="@color/PrimaryColorDark"
+   >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgAuthorIcon"
@@ -22,12 +22,13 @@
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="15dp"
         android:layout_toRightOf="@id/imgAuthorIcon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="Stavros Tsalikis" />
+        tools:text="Stavros Tsalikis"
+        android:textColor="@color/white_text"/>
 
     <TextView
         android:id="@+id/txtPubTime"
@@ -35,9 +36,9 @@
         android:layout_height="12dp"
         android:layout_below="@id/txtAuthorName"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="15dp"
         android:layout_toRightOf="@id/imgAuthorIcon"
-        android:textColor="@color/secondary_text"
+        android:textColor="@color/white_text"
         android:textSize="8sp"
         tools:text="2018/05/05" />
 

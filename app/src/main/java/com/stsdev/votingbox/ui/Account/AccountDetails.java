@@ -7,14 +7,20 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
+import com.stsdev.votingbox.data.Model.Category;
+import com.stsdev.votingbox.data.Model.Option;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 import com.stsdev.votingbox.ui.main.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +28,7 @@ import butterknife.ButterKnife;
 public class AccountDetails extends BaseActivity implements AccountDetailsView {
 
     private AccountDetailsPresenterImp<AccountDetailsView> presenter;
+
 
     @BindView(R.id.username)
     TextView username;
@@ -37,6 +44,9 @@ public class AccountDetails extends BaseActivity implements AccountDetailsView {
 
     @BindView(R.id.txtUserName)
     TextView toolbarUsername;
+
+    @BindView(R.id.prefList)
+    RecyclerView prefList;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, AccountDetails.class);
@@ -63,6 +73,8 @@ public class AccountDetails extends BaseActivity implements AccountDetailsView {
         setUp();
 
 
+
+
     }
 
     @Override
@@ -74,6 +86,9 @@ public class AccountDetails extends BaseActivity implements AccountDetailsView {
         email.setText(currentUser.getEmail());
         registered.setText(currentUser.getRegisteredDate());
         toolbarUsername.setText(currentUser.getName());
+
+        prefList.setAdapter(presenter.getAdapter());
+        presenter.RetrieveCategoriesFromServer();
 
     }
 
