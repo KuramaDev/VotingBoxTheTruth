@@ -1,5 +1,6 @@
 package com.stsdev.votingbox.ui.Register;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -7,8 +8,10 @@ import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.Utils.CommonUtils;
 import com.stsdev.votingbox.data.DataManager;
 import com.stsdev.votingbox.data.DataManagerImp;
+import com.stsdev.votingbox.data.Model.Subscription;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
+import com.stsdev.votingbox.data.SharedPrefManager;
 import com.stsdev.votingbox.ui.Base.BasePresenter;
 import com.stsdev.votingbox.ui.Base.BasePresenterImp;
 
@@ -107,6 +110,44 @@ public class RegisterPresenterImp<V extends RegisterView> extends BasePresenterI
             public void onComplete() {
                 Log.d("TEST OF RXJAVA","Completed");
                 getView().HideLoading();
+
+                //mvi.hideProgressBar();
+            }
+        };
+    }
+
+    public void subscribeUser(String email,Context context){
+        final String token = SharedPrefManager.getInstance(context).getDeviceToken();
+        Log.d("Token" , token);
+        Log.d("EMAIL" , email);
+        Subscription subscription = new Subscription();
+        subscription.setEmail(email);
+        subscription.setToken(token);
+        mdatamanager.subscribeUserObservable(subscription).subscribeWith( getSubscribeObserver());
+    }
+
+    private DisposableObserver<String> getSubscribeObserver(){
+        return new DisposableObserver<String>() {
+
+            @Override
+            public void onNext(@NonNull String movieResponse) {
+
+                Log.d("Subscription","OnNext"+movieResponse);
+                // mvi.displayMovies(movieResponse);
+
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.d("Subscription ERROR","Error"+e);
+                e.printStackTrace();
+                //mvi.displayError("Error fetching Movie Data");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d("TEST OF RXJAVA","Completed");
+
 
                 //mvi.hideProgressBar();
             }

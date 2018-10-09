@@ -19,6 +19,7 @@ import android.widget.EditText;
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.Option;
 import com.stsdev.votingbox.data.Model.SmartFragmentStatePagerAdapter;
+import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 import com.stsdev.votingbox.ui.CreateVote.fragments.CreateOptionsFragment;
 import com.stsdev.votingbox.ui.CreateVote.fragments.CreateVoteSettingsFragment;
@@ -38,6 +39,7 @@ public class AddNewVoteActivity extends BaseActivity implements CreateVoteView {
     private SmartFragmentStatePagerAdapter adapterViewPager;
     private CreateOptionsFragment frag1;
     private CreateVoteSettingsFragment frag2;
+    private User user ;
     @BindView(R.id.editText)
     EditText typeQuestion;
 
@@ -67,6 +69,8 @@ public class AddNewVoteActivity extends BaseActivity implements CreateVoteView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_vote);
         ButterKnife.bind(this);
+
+        user = (User)getIntent().getExtras().getParcelable("CurrentUser");
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
         tabsAdapter = new TabsAdapter(getSupportFragmentManager());
@@ -139,6 +143,10 @@ public class AddNewVoteActivity extends BaseActivity implements CreateVoteView {
     public Calendar retrieveDate(){
         frag2=(CreateVoteSettingsFragment) tabsAdapter.getRegisteredFragment(1);
         return frag2.getDate();
+    }
+
+    public User retrieveUserInfo(){
+        return  user;
     }
 
     @Override

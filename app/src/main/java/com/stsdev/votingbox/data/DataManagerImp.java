@@ -5,6 +5,7 @@ import android.util.Log;
 import com.stsdev.votingbox.data.Model.Category;
 import com.stsdev.votingbox.data.Model.Option;
 import com.stsdev.votingbox.data.Model.Promotion;
+import com.stsdev.votingbox.data.Model.Subscription;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.data.network.AppApiHelper;
@@ -116,11 +117,23 @@ public class DataManagerImp implements DataManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<String> subscribeUserObservable(Subscription subscription){
+        return service.subscribeUser(subscription)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
 //    public Observable<Map<String, Vote>> getCreatedObservable(){
 //        return votesService.getAllCreated()
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread());
 //    }
+
+    public Observable<String> isParticipatedObservable(int usercode , int votecode){
+        return votesService.isParticipated(usercode,votecode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
     public interface ResponseHandler {
 

@@ -18,6 +18,7 @@ import com.mindorks.placeholderview.PlaceHolderView;
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
+import com.stsdev.votingbox.data.SharedPrefManager;
 import com.stsdev.votingbox.ui.Account.AccountDetails;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 import com.stsdev.votingbox.ui.Box.MyBox;
@@ -138,12 +139,15 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
 
     @Override
     public  void onHomeMenuSelected(){
+        String token = SharedPrefManager.getInstance(this).getDeviceToken();
+        Log.d("DEVICE TOKEN", token);
 
     }
     @Override
     public void onCreateVoteMenuSelected(){
         Log.d("Create vote", "trying to do");
         Intent intent= AddNewVoteActivity.getStartIntent(MainActivity.this);
+        intent.putExtra("CurrentUser", getExtras());
         startActivity(intent);
         //inish();
     }
@@ -177,6 +181,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
 
         Intent intent = VoteDetails.getStartIntent(MainActivity.this);
         intent.putExtra("Vote" , vote);
+        intent.putExtra("CurrentUser", getExtras());
         startActivity(intent);
 
     }

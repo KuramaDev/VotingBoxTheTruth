@@ -1,5 +1,6 @@
 package com.stsdev.votingbox.ui.Voting;
 
+import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.ui.Base.BaseView;
 
@@ -9,4 +10,6 @@ import com.stsdev.votingbox.ui.Base.BaseView;
 
 public interface VoteDetailsContract extends BaseView {
    void setLayout(Vote vote);
+   User retrieveUserInfo();
+   void SetParticipatedLayout();
 }

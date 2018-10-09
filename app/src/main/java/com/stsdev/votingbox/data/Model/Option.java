@@ -9,27 +9,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class Option {
 
+    //##############################################################################################
+    //################################### STARTING #################################################
+    //##############################################################################################
+
+
+    //#=========================================Option Attributes================================#
 
     private int id ;
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 
     @SerializedName("Votecode")
     @Expose
     private int voteCode;
-
-    public void setOptionCode(int optionCode) {
-        this.optionCode = optionCode;
-    }
 
     @SerializedName("OptionCode")
     @Expose
@@ -39,9 +30,30 @@ public class Option {
     @Expose
     private String title;
 
+    @SerializedName("Count")
+    @Expose
+    private int count;
+
     private boolean isUserChosen;
 
+    //#======================================== Constructors ======================================#
+
     public Option() {
+    }
+
+
+    // #==================================== Setter and getters section ===========================#
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setOptionCode(int optionCode) {
+        this.optionCode = optionCode;
     }
 
     public int getVoteCode() {
@@ -69,8 +81,6 @@ public class Option {
         isUserChosen = userChosen;
     }
 
-
-
     public Integer getCount() {
         return count;
     }
@@ -83,14 +93,9 @@ public class Option {
         return optionCode;
     }
 
-    @SerializedName("Count")
-    @Expose
-    private int count; //How many chose this option
-
-
-
-
-
+    //##############################################################################################
+    //########################################## END ###############################################
+    //##############################################################################################
 
 
 }

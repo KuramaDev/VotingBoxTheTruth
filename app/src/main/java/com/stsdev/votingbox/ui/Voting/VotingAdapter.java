@@ -98,7 +98,7 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public VotingViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
-            int prev_position = getOldPosition() ;
+
         }
 
         public void onBind(int position) {
@@ -124,6 +124,8 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @OnClick(R.id.option)
         public void onItemCklick(){
             if (listener != null) {
+
+
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     Log.d("POSITION OPTION", String.valueOf(position));

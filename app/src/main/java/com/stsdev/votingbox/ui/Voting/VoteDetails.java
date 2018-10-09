@@ -1,7 +1,10 @@
 package com.stsdev.votingbox.ui.Voting;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +12,7 @@ import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.Promotion;
+import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 
@@ -20,7 +24,7 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
     VotingPresenterImp<VoteDetailsContract> presenter;
     VoteDetailsContract view;
-
+    User user;
     @BindView(R.id.txtAuthorName)
     TextView author;
 
@@ -40,6 +44,8 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
 
 
+
+
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, VoteDetails.class);
         return intent;
@@ -50,7 +56,7 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote_details);
         setUnBinder(ButterKnife.bind(this));
-
+        user = (User)getIntent().getExtras().getParcelable("CurrentUser");
         presenter = new VotingPresenterImp<>((Vote)getIntent().getExtras().getParcelable("Vote"));
         presenter.onAttach(VoteDetails.this);
 
@@ -59,12 +65,14 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
         optionArea.setAdapter(presenter.getAdapter());
         presenter.initListenerInAdapter();
+
     }
 
     @Override
     public  void setUp(){
         presenter.InitInfo();
         presenter.InitRecView();
+        presenter.CheckParticipation();
     }
 
     @Override
@@ -79,6 +87,23 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
     @OnClick(R.id.floatingActionButton)
     public void submit(){
         presenter.sendPromotion();
+    }
+
+    public User retrieveUserInfo(){
+        return  user;
+    }
+
+    @Override
+    public void SetParticipatedLayout(){
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.show();
+        if (progressDialog.getWindow() != null) {
+            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+       // progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(true);
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
 }

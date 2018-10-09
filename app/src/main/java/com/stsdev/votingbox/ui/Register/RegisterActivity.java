@@ -54,6 +54,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     @OnClick(R.id.btn_server_register)
     public  void  onRegister(){
         mpresenter.onRegisterClicked(name.getText().toString(),email.getText().toString(),password.getText().toString());
+        mpresenter.subscribeUser(email.getText().toString() ,this);
     }
 
 

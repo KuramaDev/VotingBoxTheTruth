@@ -10,6 +10,7 @@ import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.Utils.CommonUtils;
 import com.stsdev.votingbox.data.DataManagerImp;
 import com.stsdev.votingbox.data.Model.Option;
+import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 import com.stsdev.votingbox.ui.Base.BasePresenter;
 import com.stsdev.votingbox.ui.Base.BasePresenterImp;
@@ -70,6 +71,11 @@ public class CreateVotePresenterImp<V extends CreateVoteView> extends BasePresen
         newVote.setEndingDate(sendingDate);
         //newVote.set_endingDate(sendDate);
         newVote.setOptions(options);
+        User cur_user = getView().retrieveUserInfo();
+
+
+        newVote.setAuthorName(cur_user.getName());
+        newVote.setAuthorCode(cur_user.getUsercode());
 
         getView().ShowLoading();
         datamanager.getCreateVoteObservable(newVote).subscribeWith(getObserver());

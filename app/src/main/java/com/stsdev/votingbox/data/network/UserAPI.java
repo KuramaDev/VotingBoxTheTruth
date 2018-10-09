@@ -1,5 +1,6 @@
 package com.stsdev.votingbox.data.network;
 
+import com.stsdev.votingbox.data.Model.Subscription;
 import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.data.Model.Vote;
 
@@ -43,5 +44,9 @@ public interface UserAPI {
 
     @PUT("user/register.php")
     Observable<String> createUser(@Body User user);
+
+    @PUT("device/RegisterDevice.php")
+    Observable<String> subscribeUser(@Body Subscription sub);
+
 
 }

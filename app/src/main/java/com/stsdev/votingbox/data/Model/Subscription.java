@@ -4,59 +4,47 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by stavros on 15/7/2018.
+ * Created by stavros on 18/7/2018.
  */
 
-public class Promotion {
+public class Subscription {
 
     //##############################################################################################
     //################################### STARTING #################################################
     //##############################################################################################
 
 
-    //#========================================Promotion Attributes================================#
+    //#=========================================Subscription Attributes============================#
 
-    @SerializedName("usercode")
+    @SerializedName("email")
     @Expose
-    private int userCode;
+    private String email;
 
-    @SerializedName("votecode")
+    @SerializedName("token")
     @Expose
-    private int voteCode;
-
-    @SerializedName("optioncode")
-    @Expose
-    private int optionCode;
+    private String token;
 
     //#======================================== Constructors ======================================#
 
-    public Promotion() {
+    public Subscription() {
     }
 
     // #==================================== Setter and getters section ===========================#
 
-    public int getUserCode() {
-        return userCode;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserCode(int userCode) {
-        this.userCode = userCode;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getVoteCode() {
-        return voteCode;
+    public String getToken() {
+        return token;
     }
 
-    public void setVoteCode(int voteCode) {
-        this.voteCode = voteCode;
-    }
-
-    public int getOptionCode() {
-        return optionCode;
-    }
-
-    public void setOptionCode(int optionCode) {
-        this.optionCode = optionCode;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     //##############################################################################################

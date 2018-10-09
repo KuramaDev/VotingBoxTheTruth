@@ -47,5 +47,9 @@ public interface VotesAPI {
     @POST("vote/setParticipated.php")
     Observable<String> addParticipated(@Body Promotion participatedInfo);
 
+    @GET("vote/isparticipated.php")
+    Observable<String> isParticipated(@Query("usercode")int usercode ,
+                       @Query("votecode")int votecode);
+
 
 }

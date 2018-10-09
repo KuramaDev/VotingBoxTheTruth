@@ -1,5 +1,6 @@
 package com.stsdev.votingbox.ui.CreateVote;
 
+import com.stsdev.votingbox.data.Model.User;
 import com.stsdev.votingbox.ui.Base.BaseView;
 
 /**
@@ -9,5 +10,6 @@ import com.stsdev.votingbox.ui.Base.BaseView;
 public interface CreateVoteView  extends BaseView{
 
     void closeActivity();
+     User retrieveUserInfo();
 
 }
