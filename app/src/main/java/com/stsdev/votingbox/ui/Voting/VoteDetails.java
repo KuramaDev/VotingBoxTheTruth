@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
@@ -95,15 +96,11 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
     @Override
     public void SetParticipatedLayout(){
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.show();
-        if (progressDialog.getWindow() != null) {
-            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-       // progressDialog.setContentView(R.layout.progress_dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setCancelable(true);
-        progressDialog.setCanceledOnTouchOutside(false);
+
+
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
     }
 
 }
