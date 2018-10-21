@@ -56,11 +56,11 @@ public class DataManagerImp implements DataManager {
     }
 
 
-    public void getUser( final String email , final String pass){
+    public void getUser( final String email , final String pass ,final String token){
 
-        Call<User> call  =  service.getUser(email,pass);
+        Call<User> call  =  service.getUser(email,pass,token);
         call.enqueue(new Callback<User>() {
-
+ 
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                // Log.d (TAG , "Found the user with email" + response.body().getName());

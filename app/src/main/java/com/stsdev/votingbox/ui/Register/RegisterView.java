@@ -11,6 +11,6 @@ import com.stsdev.votingbox.ui.Base.BaseView;
 public interface RegisterView extends BaseView {
 
      void openLoginActivity();
-
+     Context getContext();
 
 }

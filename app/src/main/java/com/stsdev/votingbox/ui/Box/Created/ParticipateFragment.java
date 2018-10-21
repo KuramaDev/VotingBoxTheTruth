@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 public class ParticipateFragment extends BaseFragment implements CreateFragmentView {
 
     private View view;
+    private int usercode;
     CreateFragmentPresenterImpImp<CreateFragmentView> presenter;
 
     @BindView(R.id.ryMainPage2)
@@ -48,6 +49,7 @@ public class ParticipateFragment extends BaseFragment implements CreateFragmentV
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_participate, container, false);
         setUnBinder(ButterKnife.bind(this,view));
+        usercode = getArguments().getInt("usercode");
         return view;
     }
 
@@ -90,7 +92,7 @@ public class ParticipateFragment extends BaseFragment implements CreateFragmentV
         presenter =  new CreateFragmentPresenterImpImp<>();
         presenter.onAttach(this);
         rcView.setAdapter(presenter.getAdapter());
-        presenter.RetrieveCreatedFromServer();
+        presenter.RetrieveCreatedFromServer(usercode);
 
 
 

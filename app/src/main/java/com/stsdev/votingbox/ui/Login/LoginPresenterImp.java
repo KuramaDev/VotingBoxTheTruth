@@ -6,6 +6,7 @@ import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.Utils.CommonUtils;
 import com.stsdev.votingbox.data.DataManagerImp;
 import com.stsdev.votingbox.data.Model.User;
+import com.stsdev.votingbox.data.SharedPrefManager;
 import com.stsdev.votingbox.ui.Base.BasePresenterImp;
 
 /**
@@ -45,7 +46,9 @@ public class LoginPresenterImp<V extends LoginView> extends BasePresenterImp<V>
 
         getView().ShowLoading();
         if(getView().isNetworkConnected()) {
-            datamanager.getUser(email,password);
+            String token= getView().getToken();
+            Log.d("TOKEN LOGIN", token);
+            datamanager.getUser(email,password,token);
         }
         else{
             getView().HideLoading();

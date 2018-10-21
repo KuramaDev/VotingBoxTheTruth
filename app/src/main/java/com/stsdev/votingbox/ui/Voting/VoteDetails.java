@@ -8,7 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
@@ -41,7 +43,11 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
     @BindView(R.id.optionRec)
     RecyclerView optionArea;
 
+    @BindView(R.id.voted_stamp)
+    ImageView votedStamp;
 
+    @BindView(R.id.floatingActionButton)
+    FloatingActionButton fButton;
 
 
 
@@ -71,9 +77,10 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
 
     @Override
     public  void setUp(){
+        presenter.CheckParticipation();
         presenter.InitInfo();
         presenter.InitRecView();
-        presenter.CheckParticipation();
+
     }
 
     @Override
@@ -98,8 +105,13 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
     public void SetParticipatedLayout(){
 
 
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        //getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+        fButton.setClickable(false);
+        fButton.setVisibility(View.GONE);
+        votedStamp.setVisibility(View.VISIBLE);
+        presenter.detachListener();
 
     }
 

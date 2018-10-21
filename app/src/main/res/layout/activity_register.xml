@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
             android:layout_marginTop="60dp"
-            android:text="Sign uo for free!!"
+            android:text="Sign up for free!!"
             android:textAllCaps="true"
             android:textSize="20sp" />
 

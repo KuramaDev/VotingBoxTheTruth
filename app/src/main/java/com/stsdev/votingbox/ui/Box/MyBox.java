@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.stsdev.votingbox.R;
@@ -73,6 +74,7 @@ public class MyBox extends BaseActivity implements MyBoxView {
         public Fragment getItem (int position){
             switch (position){
                 case 0:
+                    Log.d("Created" , "Participated");
                     User user = (User)getIntent().getExtras().getParcelable("CurrentUser");
                     Bundle bundle = new Bundle();
                     bundle.putInt("usercode", user.getUsercode());
@@ -81,7 +83,15 @@ public class MyBox extends BaseActivity implements MyBoxView {
                     fragobj.setArguments(bundle);
                     return   fragobj;
                 case 1:
-                    return ParticipateFragment.newInstance();
+                    Log.d("Created" , "Favs");
+                    User user2 = (User)getIntent().getExtras().getParcelable("CurrentUser");
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt("usercode", user2.getUsercode());
+
+                    ParticipateFragment fragobj2 = ParticipateFragment.newInstance();
+                    fragobj2.setArguments(bundle2);
+                    return   fragobj2;
+
             }
             return null ;
         }
@@ -94,8 +104,10 @@ public class MyBox extends BaseActivity implements MyBoxView {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 1:
+                    Log.d("Created" , "Participated");
                     return "Participate";
                 case 0:
+                    Log.d("Created" , "Favs");
                     return "Favorite";
             }
             return "";

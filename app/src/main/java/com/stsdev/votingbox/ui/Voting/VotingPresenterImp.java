@@ -174,6 +174,7 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
                 if(movieResponse.equals("t")){
                     Log.d("PARTICIPATED MOTH","FCKING TRUE");
                     getView().SetParticipatedLayout();
+                    adapter.isParticipated(true);
                 }
 
             }
@@ -193,6 +194,11 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
                 //mvi.hideProgressBar();
             }
         };
+    }
+
+    @Override
+    public void detachListener(){
+        adapter.setOnItemClickListener(null);
     }
 
 }

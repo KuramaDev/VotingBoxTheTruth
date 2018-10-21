@@ -72,7 +72,15 @@ public class RegisterPresenterImp<V extends RegisterView> extends BasePresenterI
             return;
         }
 
-        registerUser(name,email,password);
+        if(getView().isNetworkConnected()) {
+            registerUser(name,email,password);
+            subscribeUser(email,getView().getContext());
+        }
+        else{
+            getView().HideLoading();
+            getView().onError("There is no Internet connection");
+        }
+
 
 
     }
@@ -118,7 +126,7 @@ public class RegisterPresenterImp<V extends RegisterView> extends BasePresenterI
 
     public void subscribeUser(String email,Context context){
         final String token = SharedPrefManager.getInstance(context).getDeviceToken();
-        Log.d("Token" , token);
+        //Log.d("Token" , token);
         Log.d("EMAIL" , email);
         Subscription subscription = new Subscription();
         subscription.setEmail(email);
@@ -152,5 +160,14 @@ public class RegisterPresenterImp<V extends RegisterView> extends BasePresenterI
                 //mvi.hideProgressBar();
             }
         };
+    }
+
+    public boolean isConnected(){
+        if(getView().isNetworkConnected()) {
+           return true ;
+        }
+        else{
+            return false;
+        }
     }
 }

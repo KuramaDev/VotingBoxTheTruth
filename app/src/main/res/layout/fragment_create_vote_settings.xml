@@ -28,60 +28,68 @@
             android:text="Option"
             android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/txtMaxOption"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtOption"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Max Number"
-            android:textSize="15dp" />
+            android:entries="@array/category_array"
+            android:prompt="@string/country_prompt" />
 
-        <EditText
-            android:id="@+id/edtMaxOption"
-            android:layout_width="36dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/txtMaxOption"
-            android:layout_below="@id/txtOption"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@id/txtMaxOption"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textSize="16sp"
-            tools:text="1" />
+        <!--<TextView-->
+            <!--android:id="@+id/txtMaxOption"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/txtOption"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:text="Max Number"-->
+            <!--android:textSize="15dp" />-->
 
-        <TextView
-            android:id="@+id/txtMinOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/txtMaxOption"
-            android:layout_below="@id/txtOption"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/edtMaxOption"
-            android:text="Min Number"
-            android:textSize="15dp" />
+        <!--<EditText-->
+            <!--android:id="@+id/edtMaxOption"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBaseline="@id/txtMaxOption"-->
+            <!--android:layout_below="@id/txtOption"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_toRightOf="@id/txtMaxOption"-->
+            <!--android:inputType="number"-->
+            <!--android:maxLines="1"-->
+            <!--android:textSize="16sp"-->
+            <!--tools:text="1" />-->
 
-        <EditText
-            android:id="@+id/edtMinOption"
-            android:layout_width="36dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/txtMaxOption"
-            android:layout_below="@id/txtOption"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@id/txtMinOption"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textSize="16sp"
-            tools:text="1" />
+        <!--<TextView-->
+            <!--android:id="@+id/txtMinOption"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBottom="@id/txtMaxOption"-->
+            <!--android:layout_below="@id/txtOption"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_toRightOf="@id/edtMaxOption"-->
+            <!--android:text="Min Number"-->
+            <!--android:textSize="15dp" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/edtMinOption"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBaseline="@id/txtMaxOption"-->
+            <!--android:layout_below="@id/txtOption"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_toRightOf="@id/txtMinOption"-->
+            <!--android:inputType="number"-->
+            <!--android:maxLines="1"-->
+            <!--android:textSize="16sp"-->
+            <!--tools:text="1" />-->
 
 
         <View
             android:id="@+id/lineVote"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@id/edtMinOption"
+            android:layout_below="@id/spinner1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="12dp"

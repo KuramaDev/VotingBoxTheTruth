@@ -27,4 +27,18 @@
 
     <string name="login_welcome">Welcome Voter </string>
     <string name="title_activity_account_details">AccountDetails</string>
+
+    <string name="country_prompt">Choose a vote category</string>
+
+    <string-array name="category_array">
+        <item>Fashion</item>
+        <item>Electronics</item>
+        <item>Politics</item>
+        <item>Movies</item>
+        <item>Books</item>
+        <item>Sports</item>
+        <item>General</item>
+        <item>Universe</item>
+    </string-array>
+
 </resources>

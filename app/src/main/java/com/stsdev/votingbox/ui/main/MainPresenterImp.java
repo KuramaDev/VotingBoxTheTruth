@@ -93,4 +93,6 @@ public class MainPresenterImp<V extends MainViewContract> extends BasePresenterI
         getView().setupDrawer(transferedUser);
     }
 
+
+
 }

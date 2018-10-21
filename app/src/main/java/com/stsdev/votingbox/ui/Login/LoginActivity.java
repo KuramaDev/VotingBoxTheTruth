@@ -1,5 +1,6 @@
 package com.stsdev.votingbox.ui.Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.Button;
 
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.User;
+import com.stsdev.votingbox.data.SharedPrefManager;
 import com.stsdev.votingbox.ui.Base.BaseActivity;
 import com.stsdev.votingbox.ui.Register.RegisterActivity;
 import com.stsdev.votingbox.ui.main.MainActivity;
@@ -86,5 +88,13 @@ public  class LoginActivity extends BaseActivity implements LoginView {
        this.finish();
        startActivity(intent);
    }
+
+    @Override
+    public String getToken() {
+       final String token = SharedPrefManager.getInstance(this).getDeviceToken();
+       return token;
+    }
+
+
 
 }

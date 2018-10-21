@@ -32,21 +32,21 @@ public class CreateFragmentPresenterImpImp<V extends CreateFragmentView> extends
 
 
 
-    public void RetrieveCreatedFromServer(){
+    public void RetrieveCreatedFromServer(int usercode){
         getView().ShowLoading();
-        //datamanager.getParticipatedObservable().subscribeWith(getObserver());
-        votes.clear();
-        favAdapter.notifyDataSetChanged();
-        getView().HideLoading();
+        datamanager.getParticipatedObservable(usercode).subscribeWith(getObserver());
+        //votes.clear();
+        //favAdapter.notifyDataSetChanged();
+        //getView().HideLoading();
     }
 
-    private DisposableObserver<Map<String, Vote>> getObserver(){
-        return new DisposableObserver<Map<String, Vote>>() {
+    private DisposableObserver<List<Vote>> getObserver(){
+        return new DisposableObserver<List<Vote>>() {
 
             @Override
-            public void onNext(@NonNull Map<String, Vote> movieResponse) {
+            public void onNext(@NonNull List<Vote> movieResponse) {
                 //votes = new ArrayList<>(movieResponse.values());
-                votes.addAll(movieResponse.values());
+                votes.addAll(movieResponse);
                 Log.d("TEST OF RXJAVA","OnNext"+votes.size());
                 // mvi.displayMovies(movieResponse);
             }

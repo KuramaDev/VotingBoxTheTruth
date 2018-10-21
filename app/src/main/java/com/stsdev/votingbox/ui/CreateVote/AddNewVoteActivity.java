@@ -125,7 +125,7 @@ public class AddNewVoteActivity extends BaseActivity implements CreateVoteView {
     public void OnSubmit(){
 
         Log.d("TEST",String.valueOf(vpRegion.getCurrentItem()));
-        presenter.createNewVote(typeQuestion.getText().toString(),retrieveOptions(),retrieveDate());
+        presenter.createNewVote(typeQuestion.getText().toString(),retrieveOptions(),retrieveDate(),retrieveCategory());
 
     }
 
@@ -144,6 +144,13 @@ public class AddNewVoteActivity extends BaseActivity implements CreateVoteView {
         frag2=(CreateVoteSettingsFragment) tabsAdapter.getRegisteredFragment(1);
         return frag2.getDate();
     }
+
+    public String retrieveCategory(){
+        frag2=(CreateVoteSettingsFragment) tabsAdapter.getRegisteredFragment(1);
+        Log.d("Item Retrieved" ,frag2.getCategoryName());
+        return frag2.getCategoryName();
+    }
+
 
     public User retrieveUserInfo(){
         return  user;

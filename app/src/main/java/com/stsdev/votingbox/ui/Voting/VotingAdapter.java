@@ -31,6 +31,7 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<Option> options;
     private int totalVotes;
+    private boolean part = false;
     OnItemSelectedListenerVoting listener;
 
 
@@ -64,6 +65,11 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public void setOnItemClickListener(OnItemSelectedListenerVoting listener){
         this.listener = listener;
+    }
+
+
+    public  void isParticipated(boolean part){
+        this.part = part ;
     }
 
     public interface OnItemSelectedListenerVoting  {
@@ -108,9 +114,11 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             optTitle.setText(option.getTitle());
             progressBar.setProgress(computePercent(option.getCount()));
             percentage.setText(String.valueOf(computePercent(option.getCount())));
-            percentage.setVisibility(View.GONE);
-            progressBar.setVisibility(View.GONE);
-            voted.setVisibility(View.GONE);
+            if(!part) {
+                percentage.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
+            }
+            //voted.setVisibility(View.GONE);
         }
 
         private float computePercent(int votesOfOption){

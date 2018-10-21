@@ -32,31 +32,53 @@
         layout="@layout/include_function_bar"
        />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/optionRec"
-        android:layout_height="wrap_content"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        android:scrollbars="vertical"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-        tools:listitem="@layout/select_option">
-
-
-    </android.support.v7.widget.RecyclerView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:foregroundGravity="bottom"
+        android:layout_marginBottom="10dp"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/optionRec"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:scrollbars="vertical"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            tools:listitem="@layout/select_option"
+            android:layout_weight="1"
+            android:layout_above="@id/voted_stamp">
 
 
-        android:clickable="true"
-        app:fabSize="normal"
-        app:backgroundTint="@color/SecondaryColor"
-        app:srcCompat="@drawable/vote_box_icon" />
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/voted_stamp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/votedstamp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
 
 
+            app:backgroundTint="@color/SecondaryColor"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/vote_box_icon"
+           />
+
+    </RelativeLayout>
 
 </LinearLayout>

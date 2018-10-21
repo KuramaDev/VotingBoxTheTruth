@@ -36,6 +36,11 @@ public class User implements Parcelable {
     @Expose
     @SerializedName("register")
     private String registeredDate ; // User registered date
+    
+    @Expose
+    @SerializedName("token")
+    private String token ; // User registered date
+
 
 
     //#======================================== Constructors =======================================#
@@ -92,6 +97,14 @@ public class User implements Parcelable {
 
     public String getRegisteredDate() {
         return registeredDate;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 // #================================ Parcelable specific ===========================================#
 

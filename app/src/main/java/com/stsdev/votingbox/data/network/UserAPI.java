@@ -37,7 +37,8 @@ public interface UserAPI {
 
     @GET("user/login.php")
     Call<User> getUser(@Query("email")String email ,
-                       @Query("pass")String pass);
+                       @Query("pass")String pass,
+                        @Query("token")String token);
 
 //    @PUT("user/register.php")
 //    Call<String> createUser(@Body User user);

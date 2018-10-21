@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
@@ -21,6 +23,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemSelected;
 import butterknife.Unbinder;
 
 
@@ -31,12 +34,21 @@ public class CreateVoteSettingsFragment extends BaseFragment implements CreateSe
 
     private View rootView;
     private CreateSettingsPresenterImp presenter;
+
+
     Unbinder unbinder;
     Calendar endDate;
+
+    private String categoryName = "General";
 
 
     @BindView(R.id.txtEndTimeDetail)
     TextView endingDate;
+
+    @BindView(R.id.spinner1)
+    Spinner categoryDDList ;
+
+
 
     public CreateVoteSettingsFragment() {
         // Required empty public constructor
@@ -63,12 +75,9 @@ public class CreateVoteSettingsFragment extends BaseFragment implements CreateSe
         super.onViewCreated(view, savedInstanceState);
 
 
-
+        loadSpinnerIdTypes();
         presenter = new CreateSettingsPresenterImp();
         presenter.onAttach(this);
-
-
-
 
     }
 
@@ -99,4 +108,30 @@ public class CreateVoteSettingsFragment extends BaseFragment implements CreateSe
     public Calendar getDate(){
         return this.endDate;
     }
+
+    @OnItemSelected(R.id.spinner1)
+    public  void itemSelected(int position){
+
+        Log.d("Spiner Item", categoryDDList.getItemAtPosition(position).toString() );
+        this.categoryName = categoryDDList.getItemAtPosition(position).toString();
+
+    }
+
+    @OnItemSelected(value = R.id.spinner1, callback = OnItemSelected.Callback.NOTHING_SELECTED)
+     public void onNothingSelected() {
+        Log.d("Spinner" , "Nothing");
+    }
+
+    private void loadSpinnerIdTypes() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.category_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categoryDDList.setAdapter(adapter);
+    }
+
+    public String getCategoryName(){
+        return this.categoryName;
+    }
+
+
 }

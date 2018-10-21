@@ -41,7 +41,7 @@ public class CreateVotePresenterImp<V extends CreateVoteView> extends BasePresen
 
 
 
-    public void createNewVote(String question, List<Option> options,Calendar endDate){
+    public void createNewVote(String question, List<Option> options,Calendar endDate , String category){
 
         if(question.isEmpty() || question.length()==0){
             getView().onError(R.string.empty_vote_question);
@@ -66,11 +66,14 @@ public class CreateVotePresenterImp<V extends CreateVoteView> extends BasePresen
             }
         }
 
+
+
         Vote newVote = new Vote();
         newVote.setQuestion(question);
         newVote.setEndingDate(sendingDate);
         //newVote.set_endingDate(sendDate);
         newVote.setOptions(options);
+        newVote.setCategory(category);
         User cur_user = getView().retrieveUserInfo();
 
 

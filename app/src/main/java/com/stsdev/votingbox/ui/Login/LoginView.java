@@ -12,5 +12,6 @@ public interface LoginView extends BaseView {
     void  openMainActivity(User user);
     void  setRegisterVisible();
     void  openRegisterActivity();
+    String getToken();
 
 }

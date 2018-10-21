@@ -104,14 +104,14 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         item1 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_HOME);
         item2 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_CREATE_VOTE);
         item3 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_VOTINGBOX);
-        item4 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_SEARCH);
+        //item4 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_SEARCH);
         item5 = new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_ACCOUNT);
         mDrawerView
                 .addView(new DrawerHeader(user))
                 .addView(item1)
                 .addView(item2)
                 .addView(item3)
-                .addView(item4)
+                //.addView(item4)
                 .addView(item5);
 
 
@@ -131,7 +131,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         item1.setDrawerCallBack(this);
         item2.setDrawerCallBack(this);
         item3.setDrawerCallBack(this);
-        item4.setDrawerCallBack(this);
+       // item4.setDrawerCallBack(this);
         item5.setDrawerCallBack(this);
 
         drawerToggle.syncState();
@@ -141,6 +141,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
     public  void onHomeMenuSelected(){
         String token = SharedPrefManager.getInstance(this).getDeviceToken();
         Log.d("DEVICE TOKEN", token);
+       presenter.RetrieveVotesFromServer();
 
     }
     @Override
