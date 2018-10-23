@@ -55,5 +55,9 @@ public interface VotesAPI {
     Observable<String> isFavourite(@Query("usercode")int usercode ,
                                       @Query("votecode")int votecode);
 
+    @GET("vote/updateFav.php")
+    Observable<String> updateFavs(@Query("usercode")int usercode ,
+                                  @Query("votecode")int votecode);
+
 
 }

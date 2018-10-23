@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -128,6 +129,22 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         favImage.setImageResource(R.drawable.heart);
 
+    }
+
+    @OnClick({R.id.imgBarFavorite , R.id.txtBarFavorite})
+    public void updateFavourite(){
+        Log.d("Favourite Cklicked" , "HOLA");
+        presenter.isFav();
+    }
+
+    @Override
+    public void setHeart(){
+        favImage.setImageResource(R.drawable.heart);
+    }
+
+    @Override
+    public void setOther(){
+        favImage.setImageResource(R.drawable.favorite_icon);
     }
 
 }

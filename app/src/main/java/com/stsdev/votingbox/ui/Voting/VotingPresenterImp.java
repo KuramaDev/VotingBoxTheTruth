@@ -27,6 +27,7 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
     Vote transferedVote;
     DataManagerImp datamanager;
     Option selectedOption;
+    int favIdent;
 
     public VotingPresenterImp(Vote vote) {
         this.transferedVote = vote;
@@ -218,8 +219,63 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
                 if(movieResponse.equals("t")){
                     Log.d("Favourite MOTH","FCKING TRUE");
                     getView().SetFavouriteLayout();
+                    favIdent=1;
                    // adapter.isParticipated(true);
                 }
+                else{
+                    favIdent=0;
+                }
+
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.d("ERROR","Error"+e);
+                e.printStackTrace();
+                //mvi.displayError("Error fetching Movie Data");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d("TEST OF RXJAVA","Completed");
+                getView().HideLoading();
+
+                //mvi.hideProgressBar();
+            }
+        };
+    }
+
+    public void isFav(){
+        User curUser = getView().retrieveUserInfo();
+        if(favIdent==1){
+            getView().setOther();
+            datamanager.updateFavoriteObservable(curUser.getUsercode(), Integer.valueOf(transferedVote.getVoteCode())).subscribeWith(isObserverUpFav());
+            favIdent = 0;
+        }
+        else{
+            getView().setHeart();
+            datamanager.updateFavoriteObservable(curUser.getUsercode(), Integer.valueOf(transferedVote.getVoteCode())).subscribeWith(isObserverUpFav());
+            favIdent = 1;
+        }
+    }
+
+    private DisposableObserver<String> isObserverUpFav(){
+        return new DisposableObserver<String>() {
+
+            @Override
+            public void onNext(@NonNull String movieResponse) {
+
+                Log.d("TEST OF RXJAVA","OnNext"+movieResponse);
+                // mvi.displayMovies(movieResponse);
+//                if(movieResponse.equals("t")){
+//                    Log.d("Favourite MOTH","FCKING TRUE");
+//                    getView().SetFavouriteLayout();
+//                    favIdent=1;
+//                    // adapter.isParticipated(true);
+//                }
+//                else{
+//                    favIdent=0;
+//                }
 
             }
 

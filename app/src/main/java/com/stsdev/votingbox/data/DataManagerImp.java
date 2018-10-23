@@ -147,6 +147,11 @@ public class DataManagerImp implements DataManager {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+    public Observable<String> updateFavoriteObservable(int usercode , int votecode){
+        return votesService.updateFavs(usercode,votecode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 
     public interface ResponseHandler {
 
