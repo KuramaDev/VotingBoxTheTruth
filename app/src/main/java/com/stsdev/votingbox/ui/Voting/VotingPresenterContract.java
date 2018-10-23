@@ -12,4 +12,5 @@ public interface VotingPresenterContract<V extends VoteDetailsContract> extends 
     void initListenerInAdapter();
     void CheckParticipation();
     void detachListener();
+    void CheckFavourite();
 }

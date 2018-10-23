@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.stsdev.votingbox.data.Model.Category;
 import com.stsdev.votingbox.data.Model.Option;
+import com.stsdev.votingbox.data.Model.Preferences;
 import com.stsdev.votingbox.data.Model.Promotion;
 import com.stsdev.votingbox.data.Model.Subscription;
 import com.stsdev.votingbox.data.Model.User;
@@ -81,8 +82,8 @@ public class DataManagerImp implements DataManager {
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread());
 //    }
-    public Observable<List<Vote>> getListObservable(){
-        return votesService.getAllListVotes()
+    public Observable<List<Vote>> getListObservable(int usercode){
+        return votesService.getAllListVotes(usercode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -105,8 +106,8 @@ public class DataManagerImp implements DataManager {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<List<Category>> getCategoriesObservable(){
-        return categoriesService.getCategories()
+    public Observable<List<Category>> getCategoriesObservable(String email){
+        return categoriesService.getCategories(email)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -131,6 +132,18 @@ public class DataManagerImp implements DataManager {
 
     public Observable<String> isParticipatedObservable(int usercode , int votecode){
         return votesService.isParticipated(usercode,votecode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<String> isFavoriteObservable(int usercode , int votecode){
+        return votesService.isFavourite(usercode,votecode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<String> setPreference(Preferences preferences){
+        return categoriesService.setPreference(preferences)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

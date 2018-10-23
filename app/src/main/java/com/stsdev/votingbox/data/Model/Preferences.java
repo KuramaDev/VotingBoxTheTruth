@@ -10,39 +10,39 @@ import com.google.gson.annotations.SerializedName;
 public class Preferences {
 
     @Expose
-    @SerializedName("Usercode")
-    int usercode;
+    @SerializedName("Email")
+    String email;
 
     @Expose
-    @SerializedName("CategoryId")
-    int category_id;
+    @SerializedName("Category")
+    String category;
 
     @Expose
     @SerializedName("Checked")
-    int checkedl;
+    int checked;
 
-    public int getUsercode() {
-        return usercode;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsercode(int usercode) {
-        this.usercode = usercode;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public int getCheckedl() {
-        return checkedl;
+    public int getChecked() {
+        return checked;
     }
 
-    public void setCheckedl(int checkedl) {
-        this.checkedl = checkedl;
+    public void setChecked(int checked) {
+        this.checked = checked;
     }
 
     public Preferences() {

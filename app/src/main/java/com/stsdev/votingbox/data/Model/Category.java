@@ -28,6 +28,12 @@ public class Category {
     @SerializedName("Desc")
     String description;     // Category description
 
+    @Expose
+    @SerializedName("Checked")
+    int checked;
+
+
+
     boolean isOnPreferences; // if it belongs to user preferences
 
     //#======================================== Constructors ======================================#
@@ -69,6 +75,13 @@ public class Category {
         isOnPreferences = onPreferences;
     }
 
+    public int getChecked() {
+        return checked;
+    }
+
+    public void setChecked(int checked) {
+        this.checked = checked;
+    }
     //##############################################################################################
     //########################################## END ###############################################
     //##############################################################################################

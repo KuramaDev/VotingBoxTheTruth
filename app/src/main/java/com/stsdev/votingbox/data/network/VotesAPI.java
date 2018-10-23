@@ -32,8 +32,8 @@ public interface VotesAPI {
 //    @GET("/Created/.json")
 //    Observable<Map<String, Vote>> getAllCreated();
 
-    @GET("vote/read.php?records")
-    Observable<List<Vote>> getAllListVotes();
+    @GET("vote/getVotes.php")
+    Observable<List<Vote>> getAllListVotes(@Query("usercode" )int usercode);
 
     @GET("vote/getFavorites.php")
     Observable<List<Vote>> getAllFavs(@Query("usercode")int usercode);
@@ -50,6 +50,10 @@ public interface VotesAPI {
     @GET("vote/isparticipated.php")
     Observable<String> isParticipated(@Query("usercode")int usercode ,
                        @Query("votecode")int votecode);
+
+    @GET("vote/isfavorite.php")
+    Observable<String> isFavourite(@Query("usercode")int usercode ,
+                                      @Query("votecode")int votecode);
 
 
 }

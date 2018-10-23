@@ -64,9 +64,12 @@ public class Vote implements Parcelable{
    @SerializedName("send_date")
    @Expose
    private Date _endingDate;
-
-   private boolean isFav; // is true if the vote can be found in favorites list
-   private boolean participated; // is true if the vote can be found in participated list
+   @SerializedName("fav")
+   @Expose
+   private int isFav;
+   @SerializedName("part")
+   @Expose// is true if the vote can be found in favorites list
+   private int participated; // is true if the vote can be found in participated list
 
    private boolean isMultipleChoice;   //Αν μπορεί να διαλέξει παραπάνω από μία ο χρήστης
    private int optionMaxCount;         //Μέγιστο αριθμό επιλογών του χρήστη που μπορεί να διαλέξει
@@ -195,19 +198,19 @@ public class Vote implements Parcelable{
         this.categoryId = categoryId;
     }
 
-    public boolean isFav() {
+    public int isFav() {
         return isFav;
     }
 
-    public void setFav(boolean fav) {
+    public void setFav(int fav) {
         isFav = fav;
     }
 
-    public boolean isParticipated() {
+    public int isParticipated() {
         return participated;
     }
 
-    public void setParticipated(boolean participated) {
+    public void setParticipated(int participated) {
         this.participated = participated;
     }
 

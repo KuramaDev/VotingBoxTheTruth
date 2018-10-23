@@ -83,7 +83,8 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
         presenter.InitInfo();
-        presenter.RetrieveVotesFromServer();
+        Log.d("USERCODE SENT" ,String.valueOf(getExtras().getUsercode()));
+        presenter.RetrieveVotesFromServer(getExtras().getUsercode());
         voteArea.setAdapter(presenter.getAdapter());
         presenter.initListenerInAdapter();
 
@@ -141,7 +142,7 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
     public  void onHomeMenuSelected(){
         String token = SharedPrefManager.getInstance(this).getDeviceToken();
         Log.d("DEVICE TOKEN", token);
-       presenter.RetrieveVotesFromServer();
+       presenter.RetrieveVotesFromServer(getExtras().getUsercode());
 
     }
     @Override

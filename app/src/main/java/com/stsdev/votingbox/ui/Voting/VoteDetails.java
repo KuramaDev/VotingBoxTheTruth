@@ -49,6 +49,9 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
     @BindView(R.id.floatingActionButton)
     FloatingActionButton fButton;
 
+    @BindView(R.id.imgBarFavorite)
+    ImageView favImage;
+
 
 
 
@@ -78,8 +81,10 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
     @Override
     public  void setUp(){
         presenter.CheckParticipation();
+        presenter.CheckFavourite();
         presenter.InitInfo();
         presenter.InitRecView();
+
 
     }
 
@@ -112,6 +117,16 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
         fButton.setVisibility(View.GONE);
         votedStamp.setVisibility(View.VISIBLE);
         presenter.detachListener();
+
+    }
+
+    @Override
+    public void SetFavouriteLayout(){
+
+
+        //getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        favImage.setImageResource(R.drawable.heart);
 
     }
 

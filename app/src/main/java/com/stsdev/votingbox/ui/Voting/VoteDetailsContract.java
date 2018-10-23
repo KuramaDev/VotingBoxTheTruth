@@ -12,4 +12,5 @@ public interface VoteDetailsContract extends BaseView {
    void setLayout(Vote vote);
    User retrieveUserInfo();
    void SetParticipatedLayout();
+   void  SetFavouriteLayout();
 }

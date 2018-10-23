@@ -7,7 +7,7 @@ import com.stsdev.votingbox.ui.Base.BasePresenter;
  */
 
 public interface MainPresenterInterface<V extends MainViewContract> extends BasePresenter<V> {
-    void RetrieveVotesFromServer();
+    void RetrieveVotesFromServer(int usercode);
     MainAdapter getAdapter();
     void initListenerInAdapter();
 

@@ -69,8 +69,20 @@
                 android:layout_toEndOf="@+id/imgCategory"/>
 
 
-        </RelativeLayout>
 
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/votedIdentifier"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="Voted"
+            android:textColor="#FF0000"
+            android:textSize="20dp"
+            android:layout_marginStart="15dp"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/category_title"
+        />
     </LinearLayout>
 
 

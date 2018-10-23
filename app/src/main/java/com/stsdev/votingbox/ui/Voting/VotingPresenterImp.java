@@ -201,4 +201,43 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
         adapter.setOnItemClickListener(null);
     }
 
+    @Override
+    public void CheckFavourite(){
+        User curUser = getView().retrieveUserInfo();
+        datamanager.isFavoriteObservable(curUser.getUsercode(), Integer.valueOf(transferedVote.getVoteCode())).subscribeWith(isObserverFavourite());
+    }
+
+    private DisposableObserver<String> isObserverFavourite(){
+        return new DisposableObserver<String>() {
+
+            @Override
+            public void onNext(@NonNull String movieResponse) {
+
+                Log.d("TEST OF RXJAVA","OnNext"+movieResponse);
+                // mvi.displayMovies(movieResponse);
+                if(movieResponse.equals("t")){
+                    Log.d("Favourite MOTH","FCKING TRUE");
+                    getView().SetFavouriteLayout();
+                   // adapter.isParticipated(true);
+                }
+
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                Log.d("ERROR","Error"+e);
+                e.printStackTrace();
+                //mvi.displayError("Error fetching Movie Data");
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d("TEST OF RXJAVA","Completed");
+                getView().HideLoading();
+
+                //mvi.hideProgressBar();
+            }
+        };
+    }
+
 }

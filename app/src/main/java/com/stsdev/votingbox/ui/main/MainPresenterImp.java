@@ -34,9 +34,9 @@ public class MainPresenterImp<V extends MainViewContract> extends BasePresenterI
 
     }
 
-    public void RetrieveVotesFromServer(){
+    public void RetrieveVotesFromServer(int usercode){
         getView().ShowLoading();
-        datamanager.getListObservable().subscribeWith(getObserver());
+        datamanager.getListObservable(usercode).subscribeWith(getObserver());
     }
 
     private DisposableObserver<List<Vote>> getObserver(){
