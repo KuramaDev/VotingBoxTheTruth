@@ -49,12 +49,19 @@ public class CreateFragmentPresenterImpImp<V extends CreateFragmentView> extends
                 votes.addAll(movieResponse);
                 Log.d("TEST OF RXJAVA","OnNext"+votes.size());
                 // mvi.displayMovies(movieResponse);
+                if(votes.size() == 0){
+                    getView().onError("No results found");
+                }
+
+
             }
 
             @Override
             public void onError(@NonNull Throwable e) {
                 Log.d("ERROR","Error"+e);
                 e.printStackTrace();
+                getView().onError("No results found");
+                getView().HideLoading();
                 //mvi.displayError("Error fetching Movie Data");
             }
 

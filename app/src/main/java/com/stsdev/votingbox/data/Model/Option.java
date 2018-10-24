@@ -93,6 +93,24 @@ public class Option {
         return optionCode;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Option option = (Option) o;
+
+        if (optionCode != option.optionCode) return false;
+        return title != null ? title.equals(option.title) : option.title == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = optionCode;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
+    }
+
     //##############################################################################################
     //########################################## END ###############################################
     //##############################################################################################

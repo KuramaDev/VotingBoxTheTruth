@@ -1,9 +1,11 @@
 package com.stsdev.votingbox.ui.Box.Favorite;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
@@ -70,6 +72,14 @@ public class FavoriteAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.txtBarPollCount)
         TextView numOfVotes;
 
+        @BindView(R.id.votedIdentifier)
+        TextView votedIdent;
+
+        @BindView(R.id.imgBarFavorite)
+        ImageView fav;
+        @BindView(R.id.category_title)
+        TextView category;
+
         public FavoriteViewHolder(View viewitem){
             super(viewitem);
             ButterKnife.bind(this,itemView);
@@ -87,6 +97,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             endingTime.setText(vote.getEndingDate());
             voteTitle.setText(vote.getQuestion());
             numOfVotes.setText(String.valueOf(vote.getPollCount()));
+            category.setText(vote.getCategory());
+            if(vote.isParticipated()==1){
+                // Log.d("IsPartisipated", String.valueOf(vote.isParticipated()));
+                votedIdent.setVisibility(View.VISIBLE);
+            }
+            else{
+                // Log.d("IsPartisipated", String.valueOf(vote.isParticipated()));
+                votedIdent.setVisibility(View.GONE);
+            }
+
+                fav.setImageResource(R.drawable.heart);
+
         }
 
     }

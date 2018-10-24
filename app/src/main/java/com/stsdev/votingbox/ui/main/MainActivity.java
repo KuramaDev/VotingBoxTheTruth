@@ -140,9 +140,14 @@ public class MainActivity extends BaseActivity implements DrawerMenuItem.DrawerC
 
     @Override
     public  void onHomeMenuSelected(){
-        String token = SharedPrefManager.getInstance(this).getDeviceToken();
-        Log.d("DEVICE TOKEN", token);
-       presenter.RetrieveVotesFromServer(getExtras().getUsercode());
+//        String token = SharedPrefManager.getInstance(this).getDeviceToken();
+//        Log.d("DEVICE TOKEN", token);
+//       presenter.RetrieveVotesFromServer(getExtras().getUsercode());
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("CurrentUser", getExtras());
+
+        finish();
+        startActivity(intent);
 
     }
     @Override

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
 import com.stsdev.votingbox.data.Model.User;
@@ -23,6 +24,9 @@ public class FavoriteFragment extends BaseFragment implements FavoriteView {
 
     @BindView(R.id.ryMainPage)
     RecyclerView rcView;
+
+    @BindView(R.id.favouriteWarn)
+    TextView textWarn;
 
 
 //    private OnFragmentInteractionListener mListener;
@@ -103,4 +107,14 @@ public class FavoriteFragment extends BaseFragment implements FavoriteView {
 //        // TODO: Update argument type and name
 //        void onFragmentInteraction(Uri uri);
 //    }
+
+    @Override
+    public void turnWarnOn(){
+        textWarn.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void turnWarnOff(){
+        textWarn.setVisibility(View.GONE);
+    }
 }

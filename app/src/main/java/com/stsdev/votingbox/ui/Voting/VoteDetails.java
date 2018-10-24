@@ -101,6 +101,7 @@ public class VoteDetails extends BaseActivity implements VoteDetailsContract {
     @OnClick(R.id.floatingActionButton)
     public void submit(){
         presenter.sendPromotion();
+        finish();
     }
 
     public User retrieveUserInfo(){

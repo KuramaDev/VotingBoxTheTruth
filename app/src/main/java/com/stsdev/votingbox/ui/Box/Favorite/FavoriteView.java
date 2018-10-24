@@ -7,4 +7,6 @@ import com.stsdev.votingbox.ui.Base.BaseView;
  */
 
 public interface FavoriteView extends BaseView {
+    void turnWarnOn();
+    void turnWarnOff();
 }

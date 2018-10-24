@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.stsdev.votingbox.R;
@@ -75,6 +76,15 @@ public class CreatedAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.txtBarPollCount)
         TextView numOfVotes;
 
+        @BindView(R.id.imgBarFavorite)
+        ImageView fav;
+
+        @BindView(R.id.votedIdentifier)
+        TextView votedIdent;
+
+        @BindView(R.id.category_title)
+        TextView category;
+
         public CreatedViewHolder(View viewitem){
             super(viewitem);
             ButterKnife.bind(this,itemView);
@@ -92,6 +102,17 @@ public class CreatedAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             endingTime.setText(vote.getEndingDate());
             voteTitle.setText(vote.getQuestion());
             numOfVotes.setText(String.valueOf(vote.getPollCount()));
+            votedIdent.setVisibility(View.VISIBLE);
+            category.setText(vote.getCategory());
+            if(vote.isFav()==1){
+                Log.d("IsFav", String.valueOf(vote.isFav()));
+                fav.setImageResource(R.drawable.heart);
+            }
+            else{
+                Log.d("IsFav", String.valueOf(vote.isFav()));
+                fav.setImageResource(R.drawable.favorite_icon);
+            }
+
         }
 
     }

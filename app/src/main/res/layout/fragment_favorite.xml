@@ -17,7 +17,17 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:listitem="@layout/cardview_vote_details" />
+            tools:listitem="@layout/cardview_vote_details" >
+
+        </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/favouriteWarn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No favourites found"
+        android:gravity="center"
+        android:visibility="gone"/>
 
 </RelativeLayout>

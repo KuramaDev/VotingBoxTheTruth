@@ -45,6 +45,10 @@ public class FavoritePresenterImpImp<V extends FavoriteView> extends BasePresent
                 //votes = new ArrayList<>(movieResponse.values());
                 votes.addAll(movieResponse);
                 Log.d("TEST OF RXJAVA fragment","OnNext"+votes.size());
+                if(votes.size() == 0){
+                    getView().onError("No results found");
+                }
+
                 // mvi.displayMovies(movieResponse);
             }
 
@@ -52,6 +56,8 @@ public class FavoritePresenterImpImp<V extends FavoriteView> extends BasePresent
             public void onError(@NonNull Throwable e) {
                 Log.d("ERROR fragment","Error"+e);
                 e.printStackTrace();
+                getView().onError("No results found");
+                getView().HideLoading();
                 //mvi.displayError("Error fetching Movie Data");
             }
 

@@ -93,13 +93,24 @@ public class VotingPresenterImp<V extends VoteDetailsContract> extends BasePrese
     public void initListenerInAdapter(){
         adapter.setOnItemClickListener(new VotingAdapter.OnItemSelectedListenerVoting(){
             @Override
-            public  void itemSelected(int position){
+            public  void itemSelected(Option selOption , int position){
 
                 Option transferOption;
                 Log.d("Item Clicked", String.valueOf(position));
                 transferOption= options.get(position);
                 Log.d("OptionCode", String.valueOf(transferOption.getOptionCode()));
                 selectedOption = transferOption;
+                for (Option selectableItem : options) {
+                    if (!selectableItem.equals(selOption)
+                            && selectableItem.isUserChosen()) {
+                        selectableItem.setUserChosen(false);
+                    } else if (selectableItem.equals(transferOption)
+                            && selOption.isUserChosen()) {
+                        selectableItem.setUserChosen(true);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+
 
             }
             @Override

@@ -33,6 +33,7 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private int totalVotes;
     private boolean part = false;
     OnItemSelectedListenerVoting listener;
+    Option selOption;
 
 
     public VotingAdapter(List<Option> options,int totalVotes) {
@@ -73,7 +74,7 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface OnItemSelectedListenerVoting  {
-        void itemSelected(int position);
+        void itemSelected(Option selOption , int position);
         void unselect(int position);
     }
 
@@ -118,6 +119,12 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 percentage.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
             }
+            if(option.isUserChosen()) {
+                voted.setVisibility(View.VISIBLE);
+            }
+            else{
+                voted.setVisibility(View.GONE);
+            }
             //voted.setVisibility(View.GONE);
         }
 
@@ -132,18 +139,20 @@ public class VotingAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @OnClick(R.id.option)
         public void onItemCklick(){
             if (listener != null) {
-
-
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     Log.d("POSITION OPTION", String.valueOf(position));
-
+                    selOption=options.get(position);
+                    selOption.setUserChosen(true);
                     voted.setVisibility(View.VISIBLE);
-                    listener.itemSelected(position);
+
+                }
+
+                listener.itemSelected(selOption,position);
                 }
             }
         }
-    }
+
 
 
 }
